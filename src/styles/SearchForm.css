@@ -1,0 +1,100 @@
+.search-form-container {
+  background-color: var(--color-bg-white);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border-top: 4px solid var(--color-accent);
+  margin-bottom: 2.5rem; /* 10 */
+  transition: box-shadow 0.3s ease;
+}
+
+.search-form-container:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+.search-form-title {
+  font-size: 1.5rem; /* 2xl */
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-6);
+}
+
+.search-form-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: var(--spacing-6);
+}
+
+.search-form-label {
+  display: block;
+  font-size: 0.875rem; /* sm */
+  font-weight: 700;
+  color: #374151; /* gray-700 */
+  margin-bottom: var(--spacing-2);
+}
+
+.search-form-input,
+.search-form-select {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid #d1d5db; /* gray-300 */
+  background-color: var(--color-bg-gray-100); /* gray-50 */
+  padding: 0.625rem; /* 2.5 */
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.search-form-input:focus,
+.search-form-select:focus {
+  background-color: var(--color-bg-white);
+  border-color: var(--color-accent);
+  outline: 2px solid var(--color-accent); /* ring-accent */
+  outline-offset: -1px;
+}
+
+.search-form-select {
+  cursor: pointer;
+}
+
+.search-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--spacing-4);
+}
+
+.search-form-btn {
+  width: 100%;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  font-weight: 700;
+  padding: 0.875rem 2.5rem; /* py-3.5 px-10 */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem; /* lg */
+  border: none;
+  cursor: pointer;
+}
+
+.search-form-btn:hover {
+  background-color: #22c55e; /* green-500 approx hover state */
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-0.125rem); /* -0.5 */
+}
+
+.search-form-btn-icon {
+  width: 1.25rem; /* 5 */
+  height: 1.25rem; /* 5 */
+  margin-right: var(--spacing-2);
+}
+
+.form-group-spacing {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
