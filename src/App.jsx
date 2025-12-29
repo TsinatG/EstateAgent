@@ -1,25 +1,25 @@
-
-import './styles/App.css'
-import './pages/HomePage'
-import { Link } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import PropertyPage from './pages/PropertyPage';
-import { ArrowRight } from 'lucide-react';
+import './styles/global.css';
+import './styles/App.css';
 
-function App() {
-
-
+const App = () => {
   return (
-    <div>
-          <main>
+        <div className="app-container">
+          <Navbar />
+          <main className="app-main">
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/property/:id" element={<PropertyPage />} />
+              <Route path="/property/1" element={<PropertyPage />} />
             </Routes>
           </main>
+          <Footer />
         </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
