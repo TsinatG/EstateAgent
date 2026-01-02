@@ -3,27 +3,40 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import '../styles/SearchForm.css';
+import { useProperty } from '../context/PropertyContext'; // Import context
 
 const SearchForm = () => {
- 
+  const { searchCriteria, setSearchCriteria, performSearch } = useProperty();
+
    const handleSelectChange = (selectedOption, { name }) => {
-   console.log(selectedOption, name)
-    
+     setSearchCriteria(prev => ({
+       ...prev,
+       [name]: selectedOption.value
+     }));
   };
   
   // Handler for Date Picker
   const handleDateChange = (date) => {
     // Store as ISO string YYYY-MM-DD or empty
     const dateStr = date ? date.toISOString().split('T')[0] : '';
-   console.log(dateStr)
+    setSearchCriteria(prev => ({
+      ...prev,
+      dateAddedAfter: dateStr
+    }));
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-   console.log(name, value)
+    setSearchCriteria(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
+  
   const handleSubmit = (e) => {
-   console.log("searching ...")
+    e.preventDefault(); // Prevent default form submission
+    console.log("Searching with:", searchCriteria);
+    performSearch();
   };
 
   // Options configuration
@@ -106,7 +119,7 @@ const SearchForm = () => {
               id="postcodeArea"
               name="postcodeArea"
               placeholder="e.g. EX31, NW1"
-              value={""}
+              value={searchCriteria.postcodeArea}
               onChange={handleChange}
               className="search-form-input"
             />
@@ -122,7 +135,7 @@ const SearchForm = () => {
                 isSearchable={true}
                 name="type"
                 options={typeOptions}
-                value={getValueObj(typeOptions, "")}
+                value={getValueObj(typeOptions, searchCriteria.type)}
                 onChange={handleSelectChange}
                 styles={customStyles}
                 className="react-select-container"
@@ -134,7 +147,7 @@ const SearchForm = () => {
              <label htmlFor="dateAddedAfter" className="search-form-label">Added after</label>
              <div className="custom-datepicker-wrapper">
                 <DatePicker 
-                    selected={""}
+                    selected={searchCriteria.dateAddedAfter ? new Date(searchCriteria.dateAddedAfter) : null}
                     onChange={handleDateChange}
                     dateFormat="yyyy-MM-dd"
                     placeholderText="Select date"
@@ -152,7 +165,7 @@ const SearchForm = () => {
             <Select
                 name="minPrice"
                 options={minPriceOptions}
-                value={getValueObj(minPriceOptions, "")}
+                value={getValueObj(minPriceOptions, searchCriteria.minPrice)}
                 onChange={handleSelectChange}
                  styles={customStyles}
             />
@@ -163,7 +176,7 @@ const SearchForm = () => {
              <Select
                 name="maxPrice"
                 options={maxPriceOptions}
-                value={getValueObj(maxPriceOptions, "")}
+                value={getValueObj(maxPriceOptions, searchCriteria.maxPrice)}
                 onChange={handleSelectChange}
                  styles={customStyles}
             />
@@ -174,18 +187,18 @@ const SearchForm = () => {
              <Select
                 name="minBedrooms"
                 options={minBedOptions}
-                value={getValueObj(minBedOptions, "")}
+                value={getValueObj(minBedOptions, searchCriteria.minBedrooms)}
                 onChange={handleSelectChange}
                  styles={customStyles}
             />
           </div>
 
-           <div>
+          <div>
             <label htmlFor="maxBedrooms" className="search-form-label">Max Beds</label>
              <Select
                 name="maxBedrooms"
                 options={maxBedOptions}
-                value={getValueObj(maxBedOptions, "")}
+                value={getValueObj(maxBedOptions, searchCriteria.maxBedrooms)}
                 onChange={handleSelectChange}
                  styles={customStyles}
             />

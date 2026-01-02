@@ -11,7 +11,7 @@ const PropertyCard = ({ property }) => {
         {/* Image Section */}
         <div className="property-card-image-container">
           <img 
-            src={property.images[0]} 
+            src={property.picture} 
             alt={property.location} 
             className="property-card-img"
           />
@@ -41,7 +41,7 @@ const PropertyCard = ({ property }) => {
             
             <div className="property-card-features">
               <Bed className="property-card-bed-icon" />
-              <span className="property-card-bed-count">{property.bedroom}</span>
+              <span className="property-card-bed-count">{property.bedrooms}</span>
               <span className="property-card-bed-label">bedrooms</span>
             </div>
             
