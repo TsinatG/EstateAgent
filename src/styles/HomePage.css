@@ -9,6 +9,19 @@
   position: relative;
 }
 
+@media (min-width: 640px) {
+  .home-container {
+    padding-left: var(--spacing-6);
+    padding-right: var(--spacing-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-container {
+    padding-left: var(--spacing-8);
+  }
+}
+
 .home-remove-zone {
   position: fixed;
   inset: 0;
@@ -28,6 +41,18 @@
   padding: var(--spacing-6);
   border-radius: 9999px;
   box-shadow: var(--shadow-xl); /* shadow-2xl approx */
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
 }
 
 .home-remove-icon {
@@ -71,8 +96,25 @@
   color: white;
   padding: 2.5rem; /* 10 */
   text-align: center;
+  animation: fade-in-up 1s ease-out;
 }
 
+@media (min-width: 768px) {
+  .home-hero-content {
+    padding: 4rem; /* 16 */
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .home-hero-title {
   font-size: 2.25rem; /* 4xl */
@@ -80,6 +122,12 @@
   margin-bottom: var(--spacing-4);
   letter-spacing: -0.025em; /* tracking-tight */
   text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* drop-shadow-sm */
+}
+
+@media (min-width: 768px) {
+  .home-hero-title {
+    font-size: 3.75rem; /* 6xl */
+  }
 }
 
 .home-hero-accent {
@@ -92,6 +140,12 @@
   font-weight: 300; /* light */
 }
 
+@media (min-width: 768px) {
+  .home-hero-subtitle {
+    font-size: 1.5rem; /* 2xl */
+  }
+}
+
 .home-layout {
   display: flex;
   flex-direction: column;
@@ -99,8 +153,20 @@
   padding-top: var(--spacing-4);
 }
 
+@media (min-width: 1024px) {
+  .home-layout {
+    flex-direction: row;
+  }
+}
+
 .home-results-col {
   width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .home-results-col {
+    width: 75%;
+  }
 }
 
 .home-results-header {
@@ -163,6 +229,12 @@
 
 .home-sidebar-col {
   width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .home-sidebar-col {
+    width: 25%;
+  }
 }
 
 .home-sidebar-sticky {
