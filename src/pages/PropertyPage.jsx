@@ -60,21 +60,9 @@ const PropertyPage = () => {
         </div>
 
         {/* Gallery */}
-        <div className="property-page-gallery">
+        <div className="property-page-picture">
           <div className="property-page-main-image-container">
             <img src={images[activeImage]} alt="Main" className="property-page-main-image" />
-          </div>
-          <div className="property-page-thumbnails custom-scrollbar">
-             {images.map((img, idx) => (
-               <div 
-                 key={idx} 
-                 className={`property-page-thumbnail group ${activeImage === idx ? 'active' : ''}`}
-                 onClick={() => setActiveImage(idx)}
-               >
-                 <img src={img} alt={`View ${idx}`} className="property-page-thumbnail-img" />
-                 <div className="property-page-thumbnail-overlay" />
-               </div>
-             ))}
           </div>
         </div>
 
