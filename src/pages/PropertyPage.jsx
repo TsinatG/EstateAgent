@@ -15,7 +15,8 @@ const PropertyPage = () => {
   const favorites = []; 
 
   const [activeTab, setActiveTab] = useState('desc');
-  // We'll just have one static image for now per the request to use landscape from asset
+
+  // We'll just have one static image for now to use the landscape from asset as placeholder
   const images = [landscapeImage, landscapeImage, landscapeImage, landscapeImage];
   const [activeImage, setActiveImage] = useState(0);
 
@@ -122,9 +123,8 @@ const PropertyPage = () => {
 
               {activeTab === 'floor' && (
                 <div className="property-page-floorplan-container">
-                   {/* Using landscape as placeholder for floorplan as requested to use asset */}
+                   {/* Using landscape as placeholder for floorplan for now*/}
                   <img src={landscapeImage} alt="Floor Plan" className="property-page-floorplan-img" />
-                  <p className="text-center text-gray-500 mt-2">Floor plan not available for this property.</p>
                 </div>
               )}
 

@@ -2,6 +2,7 @@ import '../styles/global.css';
 import '../styles/HomePage.css';
 import SearchForm from '../components/SearchForm';
 import PropertyCard from '../components/PropertyCard';
+import FavoritesSidebar from '../components/FavoritesSidebar';
 import { useProperty } from '../context/PropertyContext';
 import { SearchX } from 'lucide-react';
 
@@ -41,11 +42,20 @@ const HomePage = () => {
               ))
             ) : (
               <div className="home-no-results">
-                <SearchX className="home-svg-icon home-no-results-icon" />
+                <div className="home-no-results-icon">
+                  <svg className="home-svg-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                </div>
                 <h3 className="home-no-results-title">No properties found</h3>
-                <p className="home-no-results-text">Try adjusting your search criteria</p>
+                <p className="home-no-results-text">Try adjusting your search criteria.</p>
               </div>
             )}
+          </div>
+        </div>
+
+        {/* Favorites Sidebar Column (Sticky) */}
+        <div className="home-sidebar-col">
+          <div className="home-sidebar-sticky">
+            <FavoritesSidebar />
           </div>
         </div>
       </div>
