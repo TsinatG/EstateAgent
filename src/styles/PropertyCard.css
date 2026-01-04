@@ -122,6 +122,11 @@
   height: 1.5rem; /* 6 */
 }
 
+.property-card-fav-icon.filled {
+  fill: currentColor;
+  color: #ef4444; /* red-500 */
+}
+
 .property-card-type-location {
   font-size: 0.875rem; /* sm */
   color: var(--color-secondary); /* gray-500 */

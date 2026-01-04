@@ -4,6 +4,7 @@ import propertyData from '../data/properties.json';
 import { ArrowLeft, Heart, MapPin, Bed, Maximize, Phone, Mail, Calendar } from 'lucide-react';
 import '../styles/PropertyPage.css';
 import landscapeImage from '../assets/landscape.jpg';
+import { useProperty } from '../context/PropertyContext';
 
 const PropertyPage = () => {
   const { id } = useParams();
@@ -11,8 +12,7 @@ const PropertyPage = () => {
   // Direct retrieval from json
   const property = propertyData.properties.find(p => p.id === id);
 
-  const addToFavorites = (prop) => console.log('addToFavorites:', prop);
-  const favorites = []; 
+  const { addToFavorites, removeFromFavorites, favorites } = useProperty(); 
 
   const [activeTab, setActiveTab] = useState('desc');
 
@@ -46,15 +46,23 @@ const PropertyPage = () => {
             <p className="property-page-price">£{property.price.toLocaleString()}</p>
           </div>
           <button 
-            onClick={() => addToFavorites(property)}
-            disabled={isFavorite}
+            onClick={() => {
+              if (isFavorite) {
+                removeFromFavorites(property.id);
+              } else {
+                addToFavorites(property);
+              }
+            }}
             className={`property-page-save-btn ${
               isFavorite 
                 ? 'active' 
                 : 'inactive'
             }`}
           >
-            <Heart className={`property-page-save-icon ${isFavorite ? 'filled' : ''}`} />
+            <Heart 
+              className={`property-page-save-icon ${isFavorite ? 'filled fill-current' : ''}`} 
+              fill={isFavorite ? "currentColor" : "none"}
+            />
             {isFavorite ? 'Saved' : 'Save Property'}
           </button>
         </div>

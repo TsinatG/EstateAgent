@@ -6,7 +6,7 @@ import '../styles/PropertyCard.css';
 
 const PropertyCard = ({ property }) => {
 
-  const { setIsDragging, addToFavorites } = useProperty();
+  const { setIsDragging, addToFavorites, favorites, removeFromFavorites } = useProperty();
 
   const handleDragStart = (e) => {
     setIsDragging(true);
@@ -24,6 +24,7 @@ const PropertyCard = ({ property }) => {
       draggable
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
+      style={{ cursor: 'grab'}}
     >
       <div className="property-card-content-wrapper">
         {/* Image Section */}
@@ -45,11 +46,22 @@ const PropertyCard = ({ property }) => {
                 £{property.price.toLocaleString()}
               </h3>
               <button 
-                onClick={() => {addToFavorites(property)}}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (favorites.some(fav => fav.id === property.id)) {
+                    removeFromFavorites(property.id);
+                  } else {
+                    addToFavorites(property);
+                  }
+                }}
                 className="property-card-fav-btn"
-                title="Add to favorites"
+                title={favorites.some(fav => fav.id === property.id) ? "Remove from favorites" : "Add to favorites"}
               >
-                <Heart className="property-card-fav-icon" />
+                <Heart 
+                  className={`property-card-fav-icon ${favorites.some(fav => fav.id === property.id) ? "filled" : ""}`} 
+                  fill={favorites.some(fav => fav.id === property.id) ? "currentColor" : "none"}
+                />
               </button>
             </div>
             
