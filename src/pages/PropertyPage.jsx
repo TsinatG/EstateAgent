@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import propertyData from '../data/properties.json';
-import { ArrowLeft, Heart, MapPin, Bed, Maximize, Phone, Mail, Calendar } from 'lucide-react';
+import { ArrowLeft, Heart, MapPin, Bed, Maximize, Phone, Mail, Calendar, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import '../styles/PropertyPage.css';
 import { useProperty } from '../context/PropertyContext';
 import landscapeImage from '../assets/landscape.jpg'; // Backup image
@@ -17,6 +17,7 @@ const PropertyPage = () => {
   const [activeTab, setActiveTab] = useState('desc');
   // State for gallery
   const [activeImage, setActiveImage] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (!property) {
     return <div className="text-center py-20">Property not found. <Link to="/" className="text-accent underline">Go Home</Link></div>;
@@ -74,9 +75,16 @@ const PropertyPage = () => {
         </div>
 
         {/* Gallery */}
+        {/* Gallery */}
        <div className="property-page-gallery">
-          <div className="property-page-main-image-container">
-            <img src={property.picture} alt="Main" className="property-page-main-image" />
+          <div 
+             className="property-page-main-image-container group cursor-pointer" 
+             onClick={() => setIsModalOpen(true)}
+          >
+            <img src={property.gallery[activeImage] || property.picture} alt="Main" className="property-page-main-image" />
+             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all flex items-center justify-center pointer-events-none">
+                <Maximize className="text-white opacity-0 group-hover:opacity-100 transition-opacity w-12 h-12 drop-shadow-lg" />
+            </div>
           </div>
           <div className="property-page-thumbnails custom-scrollbar">
              {property.gallery.slice(0, 6).map((img, idx) => (
@@ -91,6 +99,52 @@ const PropertyPage = () => {
              ))}
           </div>
         </div>
+
+        {/* Modal / Lightbox */}
+        {isModalOpen && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95 p-4"
+            onClick={() => setIsModalOpen(false)}
+          >
+             <button 
+               className="absolute top-4 right-4 text-white hover:text-accent transition-colors"
+               onClick={() => setIsModalOpen(false)}
+             >
+               <X className="w-10 h-10" />
+             </button>
+             
+             <button
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-accent transition-colors p-2"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveImage((prev) => (prev === 0 ? property.gallery.length - 1 : prev - 1));
+                }}
+             >
+                <ChevronLeft className="w-10 h-10" />
+             </button>
+
+             <img 
+               src={property.gallery[activeImage] || property.picture} 
+               alt="Full screen" 
+               className="max-h-[90vh] max-w-[90vw] object-contain select-none"
+               onClick={(e) => e.stopPropagation()} 
+             />
+
+             <button
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-accent transition-colors p-2"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveImage((prev) => (prev === property.gallery.length - 1 ? 0 : prev + 1));
+                }}
+             >
+                <ChevronRight className="w-10 h-10" />
+             </button>
+
+             <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm font-medium">
+               {activeImage + 1} / {property.gallery.length}
+             </p>
+          </div>
+        )}
 
         {/* Main Content Area */}
         <div className="property-page-main-grid">
