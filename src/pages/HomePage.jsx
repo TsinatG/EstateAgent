@@ -1,11 +1,11 @@
-import React,{useState, useEffect} from 'react';
-import '../styles/global.css';
-import '../styles/HomePage.css';
-import SearchForm from '../components/SearchForm';
-import PropertyCard from '../components/PropertyCard';
-import FavoritesSidebar from '../components/FavoritesSidebar';
-import { useProperty } from '../context/PropertyContext';
-import { Trash2 } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import "../styles/global.css";
+import "../styles/HomePage.css";
+import SearchForm from "../components/SearchForm";
+import PropertyCard from "../components/PropertyCard";
+import FavoritesSidebar from "../components/FavoritesSidebar";
+import { useProperty } from "../context/PropertyContext";
+import { Trash2 } from "lucide-react";
 
 const HomePage = () => {
   const { searchResults, performSearch, removeFromFavorites } = useProperty();
@@ -13,28 +13,28 @@ const HomePage = () => {
 
   const handleDragOver = (e) => {
     // Only care if we are dragging a favorite item
-    if (e.dataTransfer.types.includes('favorite_id')) {
+    if (e.dataTransfer.types.includes("favorite_id")) {
       e.preventDefault(); // Allow drop
-      console.log('drag over', e.dataTransfer.types)
-        setIsRemoveZoneActive(true);
+      console.log("drag over", e.dataTransfer.types);
+      setIsRemoveZoneActive(true);
     }
   };
 
   const handleDragLeave = (e) => {
     setIsRemoveZoneActive(false);
-    console.log('drag leave', e.dataTransfer.types)
+    console.log("drag leave", e.dataTransfer.types);
   };
 
   const handleDrop = (e) => {
     // Check if it's a favorite item being dropped
-    if (e.dataTransfer.types.includes('favorite_id')) {
-        e.preventDefault();
-        setIsRemoveZoneActive(false);
-        const favoriteId = e.dataTransfer.getData('favorite_id');
-        if (favoriteId) {
-          removeFromFavorites(favoriteId);
-        }
-        console.log('drop', e.dataTransfer.types)
+    if (e.dataTransfer.types.includes("favorite_id")) {
+      e.preventDefault();
+      setIsRemoveZoneActive(false);
+      const favoriteId = e.dataTransfer.getData("favorite_id");
+      if (favoriteId) {
+        removeFromFavorites(favoriteId);
+      }
+      console.log("drop", e.dataTransfer.types);
     }
   };
 
@@ -45,24 +45,32 @@ const HomePage = () => {
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-
       {/* Using svg visual cue for removing favorites */}
       {isRemoveZoneActive && (
         <div className="home-remove-zone">
-            <div className="home-remove-icon-wrapper">
-                <Trash2 className="home-remove-icon" />
-            </div>
-            <p className="home-remove-text">Drop to Remove</p>
+          <div className="home-remove-icon-wrapper">
+            <Trash2 className="home-remove-icon" />
+          </div>
+          <p className="home-remove-text">Drop to Remove</p>
         </div>
       )}
       {/* Search Header Section with Gradient Background */}
-      <div className="home-hero" style={{ backgroundImage: `url(/src/assets/landscape.jpg)` }}>
+      <div
+        className="home-hero"
+        style={{
+          backgroundImage: `url(${
+            new URL("../assets/landscape.jpg", import.meta.url).href
+          })`,
+        }}
+      >
         <div className="home-hero-overlay"></div>
         <div className="home-hero-content">
           <h1 className="home-hero-title">
             <span className="home-hero-accent">believe</span> in finding it
           </h1>
-          <p className="home-hero-subtitle">with the UK's largest choice of homes</p>
+          <p className="home-hero-subtitle">
+            with the UK's largest choice of homes
+          </p>
         </div>
       </div>
 
@@ -72,24 +80,38 @@ const HomePage = () => {
         {/* Results Column */}
         <div className="home-results-col">
           <div className="home-results-header">
-            <h2 className="home-results-title">
-              Properties for Sale
-            </h2>
-            <span className="home-results-count">{searchResults.length} results</span>
+            <h2 className="home-results-title">Properties for Sale</h2>
+            <span className="home-results-count">
+              {searchResults.length} results
+            </span>
           </div>
 
           <div className="home-results-list">
             {searchResults.length > 0 ? (
-              searchResults.map(property => (
+              searchResults.map((property) => (
                 <PropertyCard key={property.id} property={property} />
               ))
             ) : (
               <div className="home-no-results">
                 <div className="home-no-results-icon">
-                  <svg className="home-svg-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                  <svg
+                    className="home-svg-icon"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    />
+                  </svg>
                 </div>
                 <h3 className="home-no-results-title">No properties found</h3>
-                <p className="home-no-results-text">Try adjusting your search criteria.</p>
+                <p className="home-no-results-text">
+                  Try adjusting your search criteria.
+                </p>
               </div>
             )}
           </div>
