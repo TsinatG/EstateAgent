@@ -6,6 +6,7 @@ const PropertyContext = createContext(undefined);
 export const PropertyProvider = ({ children }) => {
   const [favorites, setFavorites] = useState(() => []);
   const initialProperties = propertyData.properties;
+  const [isDragging, setIsDragging] = useState(false);
   const [searchResults, setSearchResults] = useState(initialProperties);
   const [searchCriteria, setSearchCriteria] = useState({
     type: 'any',
@@ -90,7 +91,9 @@ export const PropertyProvider = ({ children }) => {
       performSearch,
       addToFavorites,
       removeFromFavorites,
-      clearFavorites
+      clearFavorites,
+      isDragging,
+      setIsDragging
     }}>
       {children}
     </PropertyContext.Provider>
