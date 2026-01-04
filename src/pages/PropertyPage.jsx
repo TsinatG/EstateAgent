@@ -4,6 +4,7 @@ import propertyData from '../data/properties.json';
 import { ArrowLeft, Heart, MapPin, Bed, Maximize, Phone, Mail, Calendar } from 'lucide-react';
 import '../styles/PropertyPage.css';
 import { useProperty } from '../context/PropertyContext';
+import landscapeImage from '../assets/landscape.jpg'; // Backup image
 
 const PropertyPage = () => {
   const { id } = useParams();
@@ -14,6 +15,8 @@ const PropertyPage = () => {
   const { addToFavorites, removeFromFavorites, favorites } = useProperty(); 
 
   const [activeTab, setActiveTab] = useState('desc');
+  // State for gallery
+  const [activeImage, setActiveImage] = useState(0);
 
   if (!property) {
     return <div className="text-center py-20">Property not found. <Link to="/" className="text-accent underline">Go Home</Link></div>;
@@ -23,6 +26,14 @@ const PropertyPage = () => {
 
   // Formatting date from the schema structure
   const dateAddedStr = `${property.added.month} ${property.added.day}, ${property.added.year}`;
+
+  // Image list handling: prefer property.images property, fall back to property.picture, then placeholder
+  const images = property.images && property.images.length > 0 
+    ? property.images 
+    : (property.picture ? [property.picture] : [landscapeImage]);
+
+  // Ensure activeImage index is valid
+  const currentImage = images[activeImage] || images[0];
 
   return (
     <div className="property-page-container">
@@ -63,9 +74,21 @@ const PropertyPage = () => {
         </div>
 
         {/* Gallery */}
-        <div className="property-page-picture">
+       <div className="property-page-gallery">
           <div className="property-page-main-image-container">
             <img src={property.picture} alt="Main" className="property-page-main-image" />
+          </div>
+          <div className="property-page-thumbnails custom-scrollbar">
+             {property.gallery.slice(0, 6).map((img, idx) => (
+               <div 
+                 key={idx} 
+                 className={`property-page-thumbnail group ${activeImage === idx ? 'active' : ''}`}
+                 onClick={() => setActiveImage(idx)}
+               >
+                 <img src={img} alt={`View ${idx}`} className="property-page-thumbnail-img" />
+                 <div className="property-page-thumbnail-overlay" />
+               </div>
+             ))}
           </div>
         </div>
 
@@ -114,8 +137,7 @@ const PropertyPage = () => {
 
               {activeTab === 'floor' && (
                 <div className="property-page-floorplan-container">
-                   {/* Using landscape as placeholder for floorplan for now*/}
-                  <img src={landscapeImage} alt="Floor Plan" className="property-page-floorplan-img" />
+                  <img src={property.floorPlan || landscapeImage} alt="Floor Plan" className="property-page-floorplan-img" />
                 </div>
               )}
 
@@ -201,4 +223,3 @@ const PropertyPage = () => {
 };
 
 export default PropertyPage;
-

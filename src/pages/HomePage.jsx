@@ -11,11 +11,6 @@ const HomePage = () => {
   const { searchResults, performSearch, removeFromFavorites } = useProperty();
   const [isRemoveZoneActive, setIsRemoveZoneActive] = useState(false);
 
-   // Initial load search for the first run of the app
-  useEffect(() => {
-    performSearch();
-  }, []);
-
   const handleDragOver = (e) => {
     // Only care if we are dragging a favorite item
     if (e.dataTransfer.types.includes('favorite_id')) {

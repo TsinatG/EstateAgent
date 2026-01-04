@@ -1,36 +1,179 @@
 {
-"properties": [
-  {
-    "id": "prop1",
-    "type": "House",
-    "bedrooms": 3,
-    "price": 750000,
-    "tenure": "Freehold",
-    "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-    "location": "Petts Wood Road, Petts Wood, Orpington BR5",
-    "picture": "images/prop1pic1small.jpg",
-    "url": "properties/prop1.html",
-    "added": {
-      "month": "October",
-      "day": 12,
-      "year": 2022
+  "properties": [
+    {
+      "id": "prop1",
+      "type": "House",
+      "bedrooms": 2,
+      "price": 1272442,
+      "tenure": "Freehold",
+      "description": "A stunning house in SW3. Post code=SW3, Type=House. Price range £1,272,442 to £1,490,097. Bedroom 1-2.",
+      "location": "London, SW3",
+      "picture": "/src/assets/property1/photo_1_2026-01-04_05-11-15.jpg",
+      "gallery": [
+        "/src/assets/property1/photo_1_2026-01-04_05-11-15.jpg",
+        "/src/assets/property1/photo_2_2026-01-04_05-11-15.jpg",
+        "/src/assets/property1/photo_3_2026-01-04_05-11-15.jpg",
+        "/src/assets/property1/photo_4_2026-01-04_05-11-15.jpg",
+        "/src/assets/property1/photo_5_2026-01-04_05-11-15.jpg"
+      ],
+      "floorPlan": "/src/assets/property1/floorplan.jpeg",
+      "url": "#",
+      "added": {
+        "month": "January",
+        "day": 4,
+        "year": 2026
+      }
+    },
+    {
+      "id": "prop2",
+      "type": "House",
+      "bedrooms": 3,
+      "price": 1000000,
+      "tenure": "Freehold",
+      "description": "Lovely house in N16. Postcode=N16 type=house price=£1,000,000 – £1,800,000 bedroom 2-3.",
+      "location": "London, N16",
+      "picture": "/src/assets/property2/Stoke N16.jpg",
+      "gallery": [
+        "/src/assets/property2/Stoke N16.jpg",
+        "/src/assets/property2/lstoke.jpg",
+        "/src/assets/property2/stoke kit.jpg",
+        "/src/assets/property2/stoke toil.jpg",
+        "/src/assets/property2/stoke.jpg"
+      ],
+      "floorPlan": "/src/assets/property2/floorplan.jpeg",
+      "url": "#",
+      "added": {
+        "month": "January",
+        "day": 4,
+        "year": 2026
+      }
+    },
+    {
+      "id": "prop3",
+      "type": "Flat",
+      "bedrooms": 2,
+      "price": 175000,
+      "tenure": "Leasehold",
+      "description": "Offered with its own PRIVATE REAR GARDEN this FIRST FLOOR FLAT has been tastefully decorated to create an attractive setting. Entrance comes behind the row of shops to retain privacy, where initially a large entrance lobby sits to the ground floor with a separate EXTERNAL BRICK UTILITY and STORAGE.",
+      "location": "Parmenter Road, Norwich",
+      "picture": "/src/assets/property3/148d68ebfd94d8e929f610b80d16b3de.jpeg",
+      "gallery": [
+        "/src/assets/property3/148d68ebfd94d8e929f610b80d16b3de.jpeg",
+        "/src/assets/property3/1bf1dbfc337571670b1c77d393bc77af_max_135x100.jpeg",
+        "/src/assets/property3/7d2ac25f9930847f23702e46384f5bc5.jpeg",
+        "/src/assets/property3/9dd9af9446d63a98678cbc29401140ef_max_135x100.jpeg",
+        "/src/assets/property3/bbb348cdfc42ea109e1c2770b1f33430.jpeg",
+        "/src/assets/property3/d0784f2e237d4ca2ff23a118c600e96b.jpeg"
+      ],
+      "floorPlan": "/src/assets/property3/floorplan.png",
+      "url": "#",
+      "added": {
+        "month": "November",
+        "day": 20,
+        "year": 2025
+      }
+    },
+    {
+      "id": "prop4",
+      "type": "Block of Apartments",
+      "bedrooms": 4,
+      "price": 675000,
+      "tenure": "Freehold",
+      "description": "Positioned in the highly desirable Golden Triangle area of Norwich, this property in Mill Hill Road represents a lucrative investment opportunity in the form of a meticulously converted block of apartments consisting of 4 self-contained one-bedroom flats. Each flat has been fully refurbished.",
+      "location": "Mill Hill Road, Norwich",
+      "picture": "/src/assets/property4/1c90b878f9759775bad5235dea285bdc.jpeg",
+      "gallery": [
+        "/src/assets/property4/1c90b878f9759775bad5235dea285bdc.jpeg",
+        "/src/assets/property4/4393160829bb947e1ea485f8bb44a2e2.jpeg",
+        "/src/assets/property4/6020579a47e8b0b5c2fb4b26456c8058.jpeg",
+        "/src/assets/property4/859969b065acb760368c5e5c01d7e515.jpeg",
+        "/src/assets/property4/8b7cc0d67b15bff84020aac8029bac81.jpeg",
+        "/src/assets/property4/99e580e94e9e22dc2a7d5f33cad7dd74.jpeg",
+        "/src/assets/property4/bfbf74478f43f2dc9d7704254d82f1d8.jpeg"
+      ],
+      "floorPlan": "/src/assets/property4/floorplan.jpeg",
+      "url": "#",
+      "added": {
+        "month": "May",
+        "day": 13,
+        "year": 2025
+      }
+    },
+    {
+      "id": "prop5",
+      "type": "Semi-Detached",
+      "bedrooms": 5,
+      "price": 1150000,
+      "tenure": "Freehold",
+      "description": "Elegant Victorian home on private road with grand interiors, five bedrooms, landscaped gardens, wisteria courtyard, and contemporary kitchen, blending period charm with modern family living.",
+      "location": "West Parade",
+      "picture": "/src/assets/property5/0de89f9b845968a8c343196d6ed310ec.jpeg",
+      "gallery": [
+        "/src/assets/property5/0de89f9b845968a8c343196d6ed310ec.jpeg",
+        "/src/assets/property5/1de063d99afe6bbe418df76b17448282.jpeg",
+        "/src/assets/property5/3d62516b3a3af418184380a237b5f1be.jpeg",
+        "/src/assets/property5/5540587060ce58f8694c0ed25a1cb834.jpeg",
+        "/src/assets/property5/c3e6ba863db6ed991e6fe0555958dca9.jpeg",
+        "/src/assets/property5/d4e59a10ea5b751202fc39ce0e884682.jpeg",
+        "/src/assets/property5/f8cd44f9028f63e937b40063226ef98e.jpeg"
+      ],
+      "floorPlan": "/src/assets/property5/floorplan.jpeg",
+      "url": "#",
+      "added": {
+        "month": "November",
+        "day": 5,
+        "year": 2025
+      }
+    },
+    {
+      "id": "prop6",
+      "type": "Semi-Detached",
+      "bedrooms": 3,
+      "price": 625000,
+      "tenure": "Freehold",
+      "description": "The last home available of this house type, this three bedroom semi-detached home at The Lodge offers versatile accommodation and a high-specification finish throughout.",
+      "location": "The Lodge",
+      "picture": "/src/assets/property6/143e7636883b124d20fbf61b2c22cef3.jpeg",
+      "gallery": [
+        "/src/assets/property6/143e7636883b124d20fbf61b2c22cef3.jpeg",
+        "/src/assets/property6/22a9ac88ad81e66bb843fd31c22f7367.jpeg",
+        "/src/assets/property6/414b1d78a4e489ef2c02e4b70b670440.jpeg",
+        "/src/assets/property6/852ab76f496ad834c419d57d8b66bb97.jpeg",
+        "/src/assets/property6/86f1c780f5ce808d9da3765ec3922537.jpeg",
+        "/src/assets/property6/a55a25cfb92ebc804f726cb5c7ae3e91.jpeg"
+      ],
+      "floorPlan": "/src/assets/property6/floorplan.jpeg",
+      "url": "#",
+      "added": {
+        "month": "October",
+        "day": 17,
+        "year": 2025
+      }
+    },
+    {
+      "id": "prop7",
+      "type": "Detached Bungalow",
+      "bedrooms": 5,
+      "price": 600000,
+      "tenure": "Freehold",
+      "description": "1,600 sq. ft. of flexible living awaits in this substantial 1930s five-bedroom bungalow in the heart of Cringleford. Beautifully extended over time, the home flows effortlessly, from its welcoming hallway with oak herringbone flooring to a light-filled lounge and sun room. A generous kitchen/diner.",
+      "location": "Keswick Road, Cringleford",
+      "picture": "/src/assets/property7/21222bf8de22b0606f2bb9050478e3ae.jpeg",
+      "gallery": [
+        "/src/assets/property7/21222bf8de22b0606f2bb9050478e3ae.jpeg",
+        "/src/assets/property7/1d825a0cde3220c205f0c02e5226fd4a.jpeg",
+        "/src/assets/property7/2cfae2113f8ac5ac0afa0c32fd4665a2.jpeg",
+        "/src/assets/property7/5d14b0fb637b54458bd7092c1018a6b9.jpeg",
+        "/src/assets/property7/81539e74ad9d91c59e2b0adae6a7b405.jpeg",
+        "/src/assets/property7/83aefbfaa5cb54b83105764b2716dfc9.jpeg"
+      ],
+      "floorPlan": "/src/assets/property7/floorplan.jpeg",
+      "url": "#",
+      "added": {
+        "month": "November",
+        "day": 18,
+        "year": 2025
+      }
     }
-  },
-  {
-    "id": "prop2",
-    "type": "Flat",
-    "bedrooms": 2,
-    "price": 399950,
-    "tenure": "Leasehold",
-    "description": "Modern two bedroom apartment located in the heart of Orpington. This property features a spacious open plan living area with a fully fitted kitchen, master bedroom with en-suite, and a private balcony. Ideally situated for Orpington station and local amenities.",
-    "location": "Station Road, Orpington, BR6",
-    "picture": "images/prop2pic1small.jpg",
-    "url": "properties/prop2.html",
-    "added": {
-      "month": "November",
-      "day": 5,
-      "year": 2022
-    }
-  }
-]
+  ]
 }
