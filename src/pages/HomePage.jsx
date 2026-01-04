@@ -1,3 +1,4 @@
+import React,{useState, useEffect} from 'react';
 import '../styles/global.css';
 import '../styles/HomePage.css';
 import SearchForm from '../components/SearchForm';
@@ -7,11 +8,58 @@ import { useProperty } from '../context/PropertyContext';
 import { SearchX } from 'lucide-react';
 
 const HomePage = () => {
-  const { searchResults } = useProperty();
+  const { searchResults, performSearch, removeFromFavorites } = useProperty();
+  const [isRemoveZoneActive, setIsRemoveZoneActive] = useState(false);
+
+   // Initial load search for the first run of the app
+  useEffect(() => {
+    performSearch();
+  }, []);
+
+  const handleDragOver = (e) => {
+    // Only care if we are dragging a favorite item
+    if (e.dataTransfer.types.includes('favorite_id')) {
+      e.preventDefault(); // Allow drop
+      console.log('drag over', e.dataTransfer.types)
+        setIsRemoveZoneActive(true);
+    }
+  };
+
+  const handleDragLeave = (e) => {
+    setIsRemoveZoneActive(false);
+    console.log('drag leave', e.dataTransfer.types)
+  };
+
+  const handleDrop = (e) => {
+    // Check if it's a favorite item being dropped
+    if (e.dataTransfer.types.includes('favorite_id')) {
+        e.preventDefault();
+        setIsRemoveZoneActive(false);
+        const favoriteId = e.dataTransfer.getData('favorite_id');
+        if (favoriteId) {
+          removeFromFavorites(favoriteId);
+        }
+        console.log('drop', e.dataTransfer.types)
+    }
+  };
 
   return (
-    <div className="home-container">
+    <div
+      className="home-container"
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+    >
 
+      {/* Using svg visual cue for removing favorites */}
+      {isRemoveZoneActive && (
+        <div className="home-remove-zone">
+            <div className="home-remove-icon-wrapper">
+                <Trash2 className="home-remove-icon" />
+            </div>
+            <p className="home-remove-text">Drop to Remove</p>
+        </div>
+      )}
       {/* Search Header Section with Gradient Background */}
       <div className="home-hero" style={{ backgroundImage: `url(/src/assets/landscape.jpg)` }}>
         <div className="home-hero-overlay"></div>
