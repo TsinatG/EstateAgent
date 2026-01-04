@@ -5,7 +5,7 @@ import SearchForm from '../components/SearchForm';
 import PropertyCard from '../components/PropertyCard';
 import FavoritesSidebar from '../components/FavoritesSidebar';
 import { useProperty } from '../context/PropertyContext';
-import { SearchX } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 
 const HomePage = () => {
   const { searchResults, performSearch, removeFromFavorites } = useProperty();

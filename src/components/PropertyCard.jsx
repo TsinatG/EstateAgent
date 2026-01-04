@@ -5,8 +5,26 @@ import { useProperty } from '../context/PropertyContext';
 import '../styles/PropertyCard.css';
 
 const PropertyCard = ({ property }) => {
+
+  const { setIsDragging, addToFavorites } = useProperty();
+
+  const handleDragStart = (e) => {
+    setIsDragging(true);
+    e.dataTransfer.setData('application/json', JSON.stringify(property));
+    e.dataTransfer.effectAllowed = 'copy';
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
+
   return (
-    <div className="property-card group">
+    <div
+      className="property-card group"
+      draggable
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+    >
       <div className="property-card-content-wrapper">
         {/* Image Section */}
         <div className="property-card-image-container">
@@ -27,7 +45,7 @@ const PropertyCard = ({ property }) => {
                 £{property.price.toLocaleString()}
               </h3>
               <button 
-                onClick={() => {}}
+                onClick={() => {addToFavorites(property)}}
                 className="property-card-fav-btn"
                 title="Add to favorites"
               >
