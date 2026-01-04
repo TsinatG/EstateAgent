@@ -81,7 +81,9 @@ const PropertyCard = ({ property }) => {
           </div>
           
           <div className="property-card-footer">
-            <span className="property-card-date">Added on {new Date(property.dateAdded).toLocaleDateString()}</span>
+            <span className="property-card-date">
+              Added on {property.added ? `${property.added.day} ${property.added.month} ${property.added.year}` : new Date(property.dateAdded).toLocaleDateString()}
+            </span>
             <Link 
               to={`/property/${property.id}`}
               className="property-card-link"

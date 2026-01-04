@@ -25,7 +25,7 @@ describe("Estate Agent Application", () => {
   it("renders the navbar and main heading", () => {
     renderApp();
     expect(screen.getByText(/rightmove/i)).toBeInTheDocument();
-    expect(screen.getByText(/clone/i)).toBeInTheDocument();
+    expect(screen.getByText(/plus/i)).toBeInTheDocument();
   });
 
   // Test 2: Search Functionality - Filtering by Type

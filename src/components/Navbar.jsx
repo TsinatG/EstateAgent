@@ -13,7 +13,7 @@ const Navbar = () => {
           <div className="navbar-left">
             <Link to="/" className="navbar-logo-link group">
               <Home className="navbar-logo-icon" />
-              <span className="navbar-logo-text">rightmove<span className="navbar-logo-text-accent">clone</span></span>
+              <span className="navbar-logo-text">rightmove<span className="navbar-logo-text-accent">plus</span></span>
             </Link>
             <div className="navbar-links">
               <Link to="/" className="navbar-link">
