@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import propertyData from '../data/properties.json';
 import { ArrowLeft, Heart, MapPin, Bed, Maximize, Phone, Mail, Calendar } from 'lucide-react';
 import '../styles/PropertyPage.css';
-import landscapeImage from '../assets/landscape.jpg';
 import { useProperty } from '../context/PropertyContext';
 
 const PropertyPage = () => {
@@ -15,10 +14,6 @@ const PropertyPage = () => {
   const { addToFavorites, removeFromFavorites, favorites } = useProperty(); 
 
   const [activeTab, setActiveTab] = useState('desc');
-
-  // We'll just have one static image for now to use the landscape from asset as placeholder
-  const images = [landscapeImage, landscapeImage, landscapeImage, landscapeImage];
-  const [activeImage, setActiveImage] = useState(0);
 
   if (!property) {
     return <div className="text-center py-20">Property not found. <Link to="/" className="text-accent underline">Go Home</Link></div>;
@@ -70,7 +65,7 @@ const PropertyPage = () => {
         {/* Gallery */}
         <div className="property-page-picture">
           <div className="property-page-main-image-container">
-            <img src={images[activeImage]} alt="Main" className="property-page-main-image" />
+            <img src={property.picture} alt="Main" className="property-page-main-image" />
           </div>
         </div>
 
